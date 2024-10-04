@@ -80,6 +80,7 @@ chrome.contextMenus.onClicked.addListener(async (info, tab) => {
 const runCommand = async (tab, key, command, commandOnly = false) => {
   const configuration = new Configuration({
     apiKey: key,
+    basePath: url
   })
   const openai = new OpenAIApi(configuration)
   const messages = []
@@ -95,7 +96,7 @@ const runCommand = async (tab, key, command, commandOnly = false) => {
   messages.push({role: 'user', content: command})
 
   const completion = await openai.createChatCompletion({
-    model: 'gpt-3.5-turbo',
+    model: 'llama3:latest',
     messages,
     stream: true,
     max_tokens: 500,
