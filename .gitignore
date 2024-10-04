@@ -4,3 +4,4 @@ node_modules
 .idea
 release.zip
 *.iml
+.nyc_output
